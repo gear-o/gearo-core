@@ -1,0 +1,21 @@
+<--- Last few GCs --->
+
+[85005:0x7fbaeb14d000]   133931 ms: Scavenge 1983.7 (2076.8) -> 1979.6 (2094.3) MB, 11.7 / 0.0 ms  (average mu = 0.961, current mu = 0.959) allocation failure; 
+[85005:0x7fbaeb14d000]   135874 ms: Mark-Compact 1993.9 (2094.3) -> 1981.4 (2096.5) MB, 1506.5 / 0.1 ms  (average mu = 0.883, current mu = 0.512) allocation failure; scavenge might not succeed
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+ 1: 0x10b6c03ce node::Abort() [/usr/local/Cellar/node/19.2.0/bin/node]
+ 2: 0x10b6c18a6 node::ModifyCodeGenerationFromStrings(v8::Local<v8::Context>, v8::Local<v8::Value>, bool) [/usr/local/Cellar/node/19.2.0/bin/node]
+ 3: 0x10b826c83 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/usr/local/Cellar/node/19.2.0/bin/node]
+ 4: 0x10b826c19 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/usr/local/Cellar/node/19.2.0/bin/node]
+ 5: 0x10b9a6f4f v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/usr/local/Cellar/node/19.2.0/bin/node]
+ 6: 0x10b9a60f6 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/local/Cellar/node/19.2.0/bin/node]
+ 7: 0x10b99c04e v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/Cellar/node/19.2.0/bin/node]
+ 8: 0x10b99c86d v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/Cellar/node/19.2.0/bin/node]
+ 9: 0x10b984569 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/usr/local/Cellar/node/19.2.0/bin/node]
+10: 0x10bcb97ad v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/usr/local/Cellar/node/19.2.0/bin/node]
+11: 0x10b5087f9 Builtins_CEntry_Return1_DontSaveFPRegs_ArgvOnStack_NoBuiltinExit [/usr/local/Cellar/node/19.2.0/bin/node]
+./launch.sh: line 3: 85005 Abort trap: 6           INFURA="4d0461132b3e4f11b5ac71d20fb2c88a" SIGNER="f38c4fa94b7f4fd8701c687edf23c0beef2891bf09e8912918ae7804ac566413" WALLET="0x3905A2395A33Aba21e27c66238e2806B4e9A8102" node ./build/index.js

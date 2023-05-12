@@ -1,0 +1,23 @@
+
+button{
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 1;
+    background-color: transparent;
+    border:none;
+    width:300px;
+    text-align: center;
+    color:black;
+    font-size: 30px;
+    font-family: courier;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+button:hover {
+    opacity:0.3;
+}
+
+.button:focus {
+    opacity:1;
+}

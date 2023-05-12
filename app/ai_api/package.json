@@ -1,0 +1,50 @@
+{
+  "name": "gear-o-api",
+  "version": "1.0.8",
+  "description": "gear-o api to interact with gear-o game (web, AI...)",
+  "files": [
+    "images/**/*",
+    "font/**/*",
+    "assets/**/*",
+    "./index.ts",
+    "./socket_manager.ts"
+  ],
+  "scripts": {
+    "tsc": "tsc",
+    "start": "tsc && node ./build/index.js"
+  },
+  "main": "index.js",
+  "build": {
+    "files": [
+      "package.json",
+      "font",
+      "images",
+      "assets",
+      "./index.ts",
+      "./socket_manager.ts"
+    ]
+  },
+  "dependencies": {
+    "@types/node": "^18.7.18",
+    "eth-price": "^0.1.4",
+    "help": "^3.0.2",
+    "node-datetime": "^2.1.2",
+    "socket.io": "^4.5.2",
+    "socket.io-client": "^4.5.2",
+    "typescript": "^4.8.4",
+  },
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenyhenry/gear-o-api.git"
+  },
+  "author": "keny henry",
+  "license": "Elaborium",
+  "bugs": {
+    "url": "https://github.com/kenyhenry/gear-o-api/issues"
+  },
+  "homepage": "https://github.com/kenyhenry/gear-o-api#readme",
+  "optionalDependencies": {
+    "utf-8-validate": "^5.0.10"
+  }
+}

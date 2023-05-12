@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["DOM", "ESNext"],
+    "outDir": "./",
+    "target": "ES2022",
+    "module": "commonjs",
+    "declaration": true,
+    "strict": true,
+    "removeComments": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src", "index.ts", "socket_manager.ts"],
+  "exclude": ["node_modules", "build"]
+}

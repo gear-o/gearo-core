@@ -1,0 +1,6 @@
+node_modules
+gameFile.json
+keyFile.json
+txFile.json
+package-lock.json
+*.env

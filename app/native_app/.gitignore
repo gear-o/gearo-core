@@ -1,0 +1,6 @@
+build
+node_modules
+dist
+gameFile.json
+keyFile.json
+txFile.json

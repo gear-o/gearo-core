@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self'"> -->
+        <title>Gear-o0</title>
+    </head>
+    <body>
+        <textarea id="game" type="text" style="resize:none; border:1px solidblack; background-color:black; color:white; font-size: 1.2vw;" readonly></textarea>
+        <textarea id="gameinfo" type="text" style="resize:none; border:1px solidblack; background-color:black; color:white;font-size: 12px; width: 50%;" readonly></textarea>
+        <p id="arrow" style="display: inline-block; left: 0px; color:white; margin-left: 20px;">^ = #up  &nbsp;&nbsp;  ˅ = #down <br> > = #right  &nbsp;&nbsp;  < = #left</p>
+        <p id="shoot" style="display: inline-block; left: 0px; color:white; margin-left: 20px;">'shoot' = #shoot</p>
+        <!-- <canvas id="myCanvas"></canvas> -->
+        <script>
+            let game = document.getElementById("game")
+            let gameinfo = document.getElementById("gameinfo")
+            game.rows = 37;
+            game.cols = 128;
+
+            const { ipcRenderer } = require('electron');
+            /** Add IPC event listener */
+            ipcRenderer.on('data', (event, data) => {
+                game.value = data;
+            });
+            ipcRenderer.on('gameinfo', (event, data) => {
+                gameinfo.value += data;
+            });
+
+            // get keys
+            const fs = require('fs');
+            let keyUp = "arrowUp";
+            let keyDown = "arrowDown";
+            let keyRight = "arrowRight";
+            let keyLeft = "arrowLeft";
+            let keyShoot = "whitespace";
+            let keyFile =__dirname + "/../assets/keyFile.json";
+
+            function customKey(key){
+                if(key == " "){
+                    key = "withspace"
+                }
+                return key;
+            }
+
+            if(fs.existsSync(keyFile)){
+                fs.readFile(keyFile, 'utf8', (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                    let obj = JSON.parse(data);
+                    keyUp = customKey(obj["up"]);
+                    keyDown = customKey(obj["down"]);
+                    keyLeft = customKey(obj["left"]);
+                    keyRight = customKey(obj["right"]);
+                    keyShoot = customKey(obj["shoot"]);
+
+                    let p_arrow = document.getElementById('arrow');
+                    let p_shoot = document.getElementById('shoot');
+
+                    let arrow_replace = p_arrow.innerHTML;
+                    let shoot_replace = p_shoot.innerHTML;
+
+                    arrow_replace = arrow_replace.replace('#up', keyUp);
+                    arrow_replace = arrow_replace.replace('#down', keyDown);
+                    arrow_replace = arrow_replace.replace('#right', keyRight);
+                    arrow_replace = arrow_replace.replace('#left', keyLeft);
+                    shoot_replace = shoot_replace.replace('#shoot', keyShoot);
+
+                    p_arrow.innerHTML = arrow_replace;
+                    p_shoot.innerHTML = shoot_replace;
+                });
+            }
+
+
+        </script>
+    </body>
+</html>

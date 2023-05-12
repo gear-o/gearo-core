@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html style=" height: 99%;">
+    <head>
+        <title>Gear-o</title>
+    </head>
+        <button onclick="gotomenu()" style="border:none; width:40px; height:40px; top:18px; left:18px; position:absolute; background: url(../images/back.png); background-size:cover;"></button>
+    <body style=" height: 100%;">
+        <section style=" height: 100%; display: flex;justify-content: center; align-items: center; align-self:center; font-size: 25px;">
+            <div style="display: inline-block; color:white;">
+                <p id="gameType" style="font-size: 100px;"></p>
+                <p>for this moment <br>only Etherum crypto is available,<br> we are working on supporting all cryptos <br>or build our own <br>enjoy !</p>
+                <h2>How To:</h2>
+                <div>
+                    <a href="https://www.youtube.com/watch?v=H2vU2LA_KuA" target="_blank" style="color:darkmagenta">How to install</a>
+                </div>
+                <div>
+                    <a href="https://www.youtube.com/watch?v=H2vU2LA_KuA" target="_blank" style="color:darkmagenta">How to buy crypto</a>
+                </div>
+                <div>
+                    <a href="https://www.youtube.com/watch?v=H2vU2LA_KuA" target="_blank" style="color:darkmagenta">How to scan QR code</a>
+                </div>
+            </div>
+            <div style="display: inline-block; margin-left:200px">
+                <img src="../images/MetaMask-full.jpeg" style="height:150px; width:500px;">
+                <webview id="view" src="" style="height:500px; width:500px;"></webview>
+            </div>
+            <div style="display: inline-block; color:white; font-size: 20px;">
+                <!-- <p>for this moment only Etherum crypto is available,<br> we are working on supporting all crypto <br>or build our own one enjoy !</p> -->
+            </div>
+        </section>
+        <script>
+            const { ipcRenderer } = require('electron');
+            /** Add IPC event listener */
+            const gotomenu = () => {
+                ipcRenderer.send('menu');
+            }
+        </script>
+    </body>
+</html>

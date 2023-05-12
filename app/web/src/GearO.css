@@ -1,0 +1,112 @@
+@font-face {
+  font-family: cricket;
+  /* src: url("./cricket-font/CricketPersonalUseBold-L39lW.ttf") format("truetype"); */
+  src: url("../font/cricket-font/CricketPersonalUseBold-L39lW.ttf") format("truetype");
+}
+@font-face {
+  font-family: inborn;
+  src: url("../font/inborn-font/InbornPersonalUseRegular-lgedV.ttf") format("truetype");
+}
+@font-face {
+  font-family: reward;
+  src: url("../font/reward-font/RewardPersonalUseRegular-qZAl5.ttf") format("truetype");
+}
+@font-face {
+  font-family: trip-denied;
+  src: url("../font/trip-denied-font/TripDeniedBackgroundRegular-mLmyx.ttf") format("truetype");
+}
+@font-face {
+  font-family: trip-denied-98;
+  src: url("../font/yoster-island/yoster.ttf") format("truetype");
+}
+
+/* old game */
+
+@font-face {
+  font-family: arcade;
+  src: url("../font/arcade/ARCADE.TTF") format("truetype");
+}
+@font-face {
+  font-family: arcadeclassic;
+  src: url("../font/arcadeclassic/ARCADECLASSIC.TTF") format("truetype");
+}
+@font-face {
+  font-family: orange-kid;
+  src: url("../font/orange-kid/orange\ kid.ttf") format("truetype");
+}
+@font-face {
+  font-family: minecraft;
+  src: url("../font/Minecraft.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: minecraftia;
+  src: url("../font/minecraftia/Minecraftia-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: dogica;
+  src: url("../font/dogica/TTF/dogica.ttf") format("truetype");
+}
+@font-face {
+  font-family: yoster;
+  src: url("../font/yoster-island/yoster.ttf") format("truetype");
+}
+
+button{
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 1;
+    background-color: transparent;
+    border:none;
+    width:300px;
+    text-align: center;
+    color:	#0FFF50;
+    font-size: 4.5vh;
+    font-family: 'orange-kid';
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  button:hover {
+    opacity:0.3;
+  }
+
+  .button:focus {
+    opacity:1;
+  }
+
+  /* background */
+  body{
+    background-color: black;
+  }
+
+  /* h1 */
+  .Gearo-title{
+    color:#0FFF50;
+    text-align: center;
+    font-size: 15vh;
+    font-family: 'orange-kid';
+    top:0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  /* p */
+  p{
+    color: #0FFF50;
+    text-align: center;
+    font-family: 'orange-kid';
+    font-size: 3vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  label{
+    font-size: 3vh;
+  }
+
+  div{
+    color: #0FFF50;
+    font-family: 'orange-kid';
+  }
