@@ -29,7 +29,7 @@ function App() {
     const config = require('./gearo.json');
     let server = config.SERVER_ADDR
     if(!server){
-      server = "http://localhost:300"
+      server = "http://localhost:3000"
     }
 
     const newSocket = io(server, {transports : ['websocket'], origin: server, withCredentials: true});
