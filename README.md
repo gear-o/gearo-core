@@ -8,4 +8,4 @@ Venez contribuer à ce gros projet crée en Typescript, Javascript, ...
 Framework ReactJs, ElectronJs, Typescript dur.
 
 pour contribuer venez discuter sur discord:
-- https://discord.com/channels/1138985404893245441/1191442799833399458
+- [https://discord.com/channels/1138985404893245441/1191442799833399458](https://discord.gg/czKTVrS6)https://discord.gg/czKTVrS6
