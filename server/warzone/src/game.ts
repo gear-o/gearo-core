@@ -46,7 +46,7 @@ export class Map implements IPlayerObserver{
     fees = 10;
     web3 = new Web3();
     web3Custom = new Web3Custom();
-    contract:Contract;
+    // contract:Contract;
     // TODO:
     // -shrunk the map
     // -delete part of the wall to let characters & bullet appear the other side and shoot by the hole
@@ -102,32 +102,32 @@ export class Map implements IPlayerObserver{
         this.timeUpTimer = setTimeout(() => {}, 100000);
 
         // initialize empty contract
-        const emptyContract = path.resolve(__dirname, "../contracts", "empty.sol")
-        const emptyFile = fs.readFileSync(emptyContract).toString();
-        console.log(emptyFile)
-        let emptyInput = {
-            language: "Solidity",
-            sources: {
-                "empty.sol": {
-                    content: emptyFile,
-                },
-            },
-            settings: {
-                outputSelection: {
-                    "*": {
-                        "*": ["*"],
-                    },
-                },
-            },
-        };
-        let output = JSON.parse(solc.compile(JSON.stringify(emptyInput)));
-        let fakeABI = output.contracts["empty.sol"]["empty"].abi;
-        this.contract = new this.web3Custom.web3.eth.Contract(fakeABI);
+        // const emptyContract = path.resolve(__dirname, "../contracts", "empty.sol")
+        // const emptyFile = fs.readFileSync(emptyContract).toString();
+        // console.log(emptyFile)
+        // let emptyInput = {
+        //     language: "Solidity",
+        //     sources: {
+        //         "empty.sol": {
+        //             content: emptyFile,
+        //         },
+        //     },
+        //     settings: {
+        //         outputSelection: {
+        //             "*": {
+        //                 "*": ["*"],
+        //             },
+        //         },
+        //     },
+        // };
+        // let output = JSON.parse(solc.compile(JSON.stringify(emptyInput)));
+        // let fakeABI = output.contracts["empty.sol"]["empty"].abi;
+        // this.contract = new this.web3Custom.web3.eth.Contract(fakeABI);
 
-        // create smart contract
-        if(gameType != 0){
-            this.deploySC();
-        }
+        // // create smart contract
+        // if(gameType != 0){
+        //     this.deploySC();
+        // }
     }
     available(){
         if(this.allSockets.length >= this.maxPlayers || this.started == true){
@@ -225,7 +225,7 @@ export class Map implements IPlayerObserver{
                     console.log('player: ', this.characters[i].socket, ' connected: ', this.characters[i].connected, ' confirmed: ', this.characters[i].confirmed)
                     if(this.characters[i] && !this.characters[i].confirmed){
                         console.log('player enter in game: ', this.characters[i].socket, ' connected: ', this.characters[i].connected, ' confirmed: ', this.characters[i].confirmed)
-                        this.characters[i].enterGame(this.contract, this.gamePriceWei);
+                        // this.characters[i].enterGame(this.contract, this.gamePriceWei);
                     }
                 }
                 // pay the game
@@ -323,7 +323,7 @@ export class Map implements IPlayerObserver{
                             let index = this.characters.findIndex(user => user.id == id);
                             let playerWin = this.characters[index];
                             playerWin.killed_people_nb++;
-                            this.sendCrypto(index, this.gamePriceWei);
+                            // this.sendCrypto(index, this.gamePriceWei);
                             playerWin.killed_people.push(killed_info);
                         }
                         if(this.characters.length < 2){
@@ -470,16 +470,16 @@ export class Map implements IPlayerObserver{
                     let ABI = output.contracts["freeforall.sol"]["FreeForAll"].abi;
                     let bytecode = output.contracts["freeforall.sol"]["FreeForAll"].evm.bytecode.object;
                     // console.log(bytecode)
-                    this.contract =  new this.web3Custom.web3.eth.Contract(ABI);
+                    // this.contract =  new this.web3Custom.web3.eth.Contract(ABI);
                     // this.contract = contract_std.clone();
-                    this.contract.defaultAccount = this.web3Custom.signer.address;
+                    // this.contract.defaultAccount = this.web3Custom.signer.address;
                     // contract.defaultChain = "goerli";
                     // contract.defaultHardfork = "byzantium";
                     this.web3Custom.web3.eth.getChainId().then((chainid) => {
                         console.log("chainid: ", chainid)
                         this.web3Custom.web3.eth.net.getId().then((networkid) => {
                             console.log("networkid: ", networkid)
-                            this.contract.defaultCommon = {customChain: {name: 'khy', chainId: chainid, networkId: networkid}, baseChain: 'mainnet', hardfork: 'petersburg'};
+                            // this.contract.defaultCommon = {customChain: {name: 'khy', chainId: chainid, networkId: networkid}, baseChain: 'mainnet', hardfork: 'petersburg'};
                         })
                     })
                     // console.log(web3.web3.eth.accounts)
@@ -489,21 +489,21 @@ export class Map implements IPlayerObserver{
                         if(succes){
                             break;
                         }
-                        this.contract.deploy({ data: bytecode, arguments:[this.contract.defaultAccount, this.gamePriceWei]}).estimateGas().then((gas) => {
-                            console.log('gas: ', gas);
-                            this.contract.deploy({ data: bytecode, arguments:[this.contract.defaultAccount, this.gamePriceWei] }).send({ from: this.web3Custom.signer.address, gas: 87300, gasPrice: (Math.round(gasPrice*=1.1)).toString()})
-                                .on("receipt", (receipt) => {
-                                    // Contract Address will be returned here
-                                    console.log("Contract Address:", receipt.contractAddress);
-                                })
-                                .then((contract) =>{
-                                    console.log(contract);
-                                })
-                                .catch((e)=>{
-                                    console.log('failed to deploy attempt:', i, 'gas price:', gasPrice);
-                                    console.log(e)
-                                })
-                        });
+                        // this.contract.deploy({ data: bytecode, arguments:[this.contract.defaultAccount, this.gamePriceWei]}).estimateGas().then((gas) => {
+                        //     console.log('gas: ', gas);
+                        //     this.contract.deploy({ data: bytecode, arguments:[this.contract.defaultAccount, this.gamePriceWei] }).send({ from: this.web3Custom.signer.address, gas: 87300, gasPrice: (Math.round(gasPrice*=1.1)).toString()})
+                        //         .on("receipt", (receipt) => {
+                        //             // Contract Address will be returned here
+                        //             console.log("Contract Address:", receipt.contractAddress);
+                        //         })
+                        //         .then((contract) =>{
+                        //             console.log(contract);
+                        //         })
+                        //         .catch((e)=>{
+                        //             console.log('failed to deploy attempt:', i, 'gas price:', gasPrice);
+                        //             console.log(e)
+                        //         })
+                        // });
                     }
                 }).catch((error) => {
                     // log error in a core dump send the core dump to server
@@ -518,29 +518,29 @@ export class Map implements IPlayerObserver{
             console.log(e);
         }
     }
-    sendCrypto(index:number, amount:number){
-        console.log("gameType:", this.gameType)
-        if(this.gameType > 0){
-            console.log("amount: ", amount);
-            if(amount > 0){
-                try{
-                    this.contract.methods.gain(this.characters[index].walletId).send((err:string, data:string) => {
-                        console.log("Initial Data:", data);
-                        console.log("err:", err);
-                        if(err){
-                            return false
-                        }
-                        this.characters[index].pushTx(new Tx("", "", "21000", this.gamePriceWei));
-                    }).catch((error:string)=>{
-                        return false;
-                    });
-                }catch(e){
-                    // log error in a core dump send the core dump to server
-                    console.log(e);
-                }
-            }
-        }
-    }
+    // sendCrypto(index:number, amount:number){
+    //     console.log("gameType:", this.gameType)
+    //     if(this.gameType > 0){
+    //         console.log("amount: ", amount);
+    //         if(amount > 0){
+    //             try{
+    //                 this.contract.methods.gain(this.characters[index].walletId).send((err:string, data:string) => {
+    //                     console.log("Initial Data:", data);
+    //                     console.log("err:", err);
+    //                     if(err){
+    //                         return false
+    //                     }
+    //                     this.characters[index].pushTx(new Tx("", "", "21000", this.gamePriceWei));
+    //                 }).catch((error:string)=>{
+    //                     return false;
+    //                 });
+    //             }catch(e){
+    //                 // log error in a core dump send the core dump to server
+    //                 console.log(e);
+    //             }
+    //         }
+    //     }
+    // }
     /********
      * TEAM *
      ********/

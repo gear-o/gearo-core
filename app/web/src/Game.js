@@ -60,13 +60,14 @@ export default function Game({socket}){
 
     return (
         <div onKeyDown={handleKeyPress} style={{}}>
-            <TextareaAutosize value={map} wrap="off" readOnly={true} style={{resize:"none", border:"solid", backgroundColor:"black", color:"#0FFF50", fontSize: "1.9vh", width:"148vh", height:"84vh"}}></TextareaAutosize>
+            {/* width:"148vh", fontSize: "1.9vh" */}
+            <TextareaAutosize value={map} wrap="off" readOnly={true} style={{resize:"none", border:"solid", backgroundColor:"black", color:"#0FFF50", fontFamily: "arial",fontSize: "1.6vh", width:"79%", height:"84vh"}}></TextareaAutosize>
             <div>
             <textarea value={gameInfo} readOnly={true} style={{resize:"none", border:"solid", backgroundColor:"black", color:"#0FFF50", fontSize: "1.9vh", width: "148vh", height:"5vh", rows:'', columns:''}}></textarea>
             </div>
             <div>
-            <p id="arrow" style={{display: "inline-block", left: "0px", marginLeft: "20px"}}>arrow up = up  arrowdown = down arrow right = right  &nbsp;&nbsp;  arrow left = left</p>
-            <p id="shoot" style={{display: "inline-block", left: "0px", marginLeft: "20px"}}>space = shoot</p>
+            {/* <p id="arrow" style={{display: "inline-block", left: "0px", marginLeft: "20px"}}>arrow up = up  arrowdown = down arrow right = right  &nbsp;&nbsp;  arrow left = left</p> */}
+            {/* <p id="shoot" style={{display: "inline-block", left: "0px", marginLeft: "20px"}}>space = shoot</p> */}
             </div>
         </div>
     );
