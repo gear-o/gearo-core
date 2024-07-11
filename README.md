@@ -1,11 +1,17 @@
-# GEAR-O
-Conception d'un jeu vidéo play 2 earn ou earn 2 earn.
-Gagner rapidement des cryptomonnaies.
+# WARZONE
 
-![](https://github.com/kenyhenry/gearo/blob/main/app/web/images/gearo.gif)
+## Introduction
+Warzone is the server of gear-o cli, process all map construction and send it to clients.
 
-Venez contribuer à ce gros projet crée en Typescript, Javascript, ...
-Framework ReactJs, ElectronJs, Typescript dur.
-
-pour contribuer venez discuter sur discord:
-- [https://discord.com/channels/1138985404893245441/1191442799833399458](https://discord.gg/czKTVrS6)https://discord.gg/czKTVrS6
+## How to install
+create env file gearo.env contain env var INFURA, SIGNER, WALLET
+ex:
+```{.sh}
+INFURA=235970735207502307950237850970
+SIGNER=1238504739859261504671056783650182376501286735612783568702658
+WALLET=0x9874523964856926374650234
+```
+## How to launch
+```{.sh}
+npm run start
+```
